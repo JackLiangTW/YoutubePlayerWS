@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>AmyMusic</title>
+
+    <link rel="stylesheet" type="text/css" href="./css/index.css">
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="  
+  crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+  <script async src="https://www.instagram.com/embed.js"></script>
+  <!-- For 前端 圖片s壓縮檔製作 -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.3.0/jszip.js"></script>
+  <script src="https://cdn.bootcss.com/FileSaver.js/1.3.8/FileSaver.js"></script>
+  <script src="./js/zipimg.js"></script>   
+  <!-- For 前端 圖片s壓縮檔製作 -->
+</head>
+<style>
+
+</style>
+<body>
+    <div id="Controls">
+        <p>篩選類別:
+            <span id="SelectName">全部</span>
+            <!-- <p>                
+                <button class="Radius" onclick="CloseShareContent()">聊天/分享區</button>
+            </p> -->
+            <!--                          
+            <p>
+                <button class="Radius" id="ReSave" onclick="SendToDB()">輸出回DB</button>
+            </p> 
+            <p id="GetAllCrawler">
+                <button class="Radius">取得天數類別</button>
+                <br>
+                <span id="AllDays"></span>
+            </p>
+            -->
+            <p id="SocialKind">
+                <button class="Radius ISactive" onclick="GetTodayKindData('facebook')">Facebook</button>
+                <button class="Radius" onclick="GetTodayKindData('ig')">IG</button>
+                <button class="Radius" onclick="GetTodayKindData('twitter')">Twitter</button>
+                <button class="Radius" onclick="GetTodayKindData('youtube')">Youtube</button>
+                <button class="Radius" onclick="GetTodayKindData('YtTrending')">Youtube發燒影片</button>
+                <button class="Radius" onclick="GetTodayKindData('YoutubeMusic')">YtMusic精選</button>
+                <button class="Radius" onclick="GetTodayKindData('YtHotMusic')">YtMusic官方精選</button>
+                <button class="Radius" onclick="GetTodayKindData('YtMusicSort')">MusicYt.com精選</button>
+                <button class="Radius" onclick="GetTodayKindData('YoutubeLive')">YoutubeLive</button>                
+                <!-- <button class="Radius" onclick="GetTodayKindData('facebooktest')">Facebook Share</button>
+                <button class="Radius" onclick="GetTodayKindData('igtest')">IG Share</button>
+                <button class="Radius" onclick="GetTodayKindData('twittertest')">Twitter Share</button> -->
+                <button class="Radius" onclick="GetTodayKindData('tiktoktest')">tiktok Share</button>                
+            </p>
+            <!-- <button onclick="GroupClick(-1)">全部</button> -->
+            <p id="ClassBtns">
+                
+            </p>
+            <p id="SubClassBtns">
+                
+            </p>            
+            <p id="SelectShow">
+                <button class="Radius" key='nb' >時間新</button>
+                <button class="Radius ISactive" key='likes'>讚數多</button>
+                <button class="Radius" key='msg'>留言數多</button>
+            </p>
+        </p>
+        <p id="PostClassSelect">
+            <button class="Radius" id="btnDownLoad" onclick="DoZip()">下載圖片zip</button>
+            <button id="NormalClass" class="Radius classchoose ISactive" onclick="ShowClass('normal')">圖文區</button>
+            <button id="ShareClass" class="Radius classchoose" onclick="ShowClass('share')">影片區</button>
+        </p>
+    </div>    
+    <div id="Outer"> 
+        
+    </div>
+    <div id="YtInfinityPlayer">
+        
+    </div>
+    <div id="GoTop" class="Rounds">
+        Top
+    </div>
+    <div id="FixedMenuBtn" class="Rounds">
+        選單
+    </div>
+    <div id="OpenFixedPlayer" class="Rounds">
+        撥放器
+    </div>
+    <div id="ToggleShareContentArea" onclick="CloseShareContent()" class="Rounds">
+        聊天室
+    </div>
+    <div id="blocks">
+        <p>載入資料中....<br><br>(圖片載入會因網路速度不同而需要不同時間)</p>
+    </div>
+    <div id="ShareContentArea">
+        <span>聊天室</span>
+        <button onclick="CloseShareContent()">X</button>
+        <div class="datas">
+                <p class="Other">
+                    <span>歡迎來到 - 分享/聊天區
+                        <br>可以勾選"分享歌單"來分享自己的"自訂歌單"給所有人                        
+                    </span>
+                </p>
+                <p class="Other">
+                    <span>
+                        也可以點擊每則"留言"旁邊"►"按鈕撥放該歌單
+                    </span>
+                </p>
+                <p class="Other">
+                    <span>Amy台灣流行音樂精選</span>
+                    <button key="0" class="PlayShareList">►</button>
+                </p>
+                <p class="Other">
+                    <span>Amy西洋流行音樂精選</span>
+                    <button key="1" class="PlayShareList">►</button>
+                </p>
+        </div>
+        <p>
+            <input type="text" placeholder="說些什麼" id="says">
+            <button id="ShareListBtnAttr">分享歌單</button>
+            <button id="SendSays">送出</button>
+        </p>
+    </div>
+    <div id="DoDownload">
+        <p>製作中....</p>
+        <span>0%</span>
+    </div>
+    <script type="text/javascript" src="/socket.io/socket.io.js"></script> -->
+    <script src="./js/YtSocketShareList.js"></script>
+    <script src="./js/YtCookie.js"></script>
+    <script src="./js/BrowserInView.js"></script>
+    <script src="./js/YtEmbed.js"></script>
+    <script src="./js/index.js"></script>  
+    
+</body>
+</html>
